@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TicTacGame</title>
+    <link rel="stylesheet" href="style.css">
+    <!--GSAP-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+<!--    SCRIPTS-->
+    <script src="script.js" defer></script>
+    <script src="animations.js" defer></script>
+
+    <!--    G Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<!--    Font Awesome-->
+    <script src="https://kit.fontawesome.com/4ef2199138.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <nav class="head">
+        <a href="index.html"><h1 class="Title">TicTacGame</h1></a>
+        <ul>
+            <li><a href="about.html">About</a></li>
+            <li>Made with 💖 by <a href="https://stefan3002.github.io./">Stefan</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section class="wrapper">
+        <h1>Play vs. CPU</h1>
+        <p class="alert CPUalert">CPU Wins! Better luck next time.</p>
+        <p class="alert DRAWalert">DRAW! Try again, so will the CPU.</p>
+        <p class="alert YOUalert">YOU WIN! The CPU will have to rest to try and beat you.</p>
+        <h2>Weapon of choice:</h2>
+        <div class="weapons">
+            <i class="weapon fa-3x fa-solid fa-x"></i><br>
+            <i class="weapon fa-3x fa-solid fa-0"></i>
+        </div>
+        <section class="board">
+            <div class="cell 1">1</div>
+            <div class="cell 2">2</div>
+            <div class="cell 3">3</div>
+            <div class="cell 4">4</div>
+            <div class="cell 5">5</div>
+            <div class="cell 6">6</div>
+            <div class="cell 7">7</div>
+            <div class="cell 8">8</div>
+            <div class="cell 9">9</div>
+        </section>
+        <button class="playBtn">Play</button>
+        <p class="alert alertWeapon">You can not fight without a weapon!</p>
+    </section>
+</main>
+<footer>
+
+</footer>
+</body>
+</html>
