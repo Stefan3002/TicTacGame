@@ -1,5 +1,5 @@
 function play(cells,weapon) {
-    console.log(weapon)
+    cells.forEach(cell => {cell.classList.add('startedGame')})
     cells.forEach(cell => {
         cell.addEventListener('click', function cellClickHandler(e) {
             const clickedCell = e.target
