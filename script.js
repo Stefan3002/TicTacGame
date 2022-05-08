@@ -7,14 +7,104 @@ function play(cells,weapon) {
             if (!clickedCell.classList.contains("clicked") && !clickedCell.classList.contains("clickedAI")) {
                 clickedCell.innerHTML = "<i class=\"icon clicked fa-xl fa-solid fa-" + weapon + " \"></i>"
                 clickedCell.classList.add("clicked")
-                checkValid(cells)
-                playAI(cells, weapon)
+                if(checkValid(cells))
+                    playAI(cells, weapon)
             }
             // else
                 // alert("Already clicked!")
 
         })
     })
+}
+function endGame(cells,aux,user){
+    cells.forEach(cell => {
+        if(!cell.classList.contains("clicked"))
+            cell.classList.add("clicked")
+    })
+    let color = user === 'user' ? 'greenFinish' : 'redFinish'
+    if(user === 'draw')
+       color = 'neutralFinish'
+    if(aux.includes('123')){
+        cells.forEach(cell => {
+            if(cell.classList.contains('1'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('2'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('3'))
+                cell.classList.add('finishGame', color)
+        })
+    }
+    if(aux.includes('456')){
+        cells.forEach(cell => {
+            if(cell.classList.contains('4'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('5'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('6'))
+                cell.classList.add('finishGame', color)
+        })
+    }
+    if(aux.includes('789')){
+        cells.forEach(cell => {
+            if(cell.classList.contains('7'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('8'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('9'))
+                cell.classList.add('finishGame', color)
+        })
+    }
+    if(aux.includes('147')){
+        cells.forEach(cell => {
+            if(cell.classList.contains('1'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('4'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('7'))
+                cell.classList.add('finishGame', color)
+        })
+    }
+    if(aux.includes('258')){
+        cells.forEach(cell => {
+            if(cell.classList.contains('2'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('5'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('8'))
+                cell.classList.add('finishGame', color)
+        })
+    }
+    if(aux.includes('369')){
+        cells.forEach(cell => {
+            if(cell.classList.contains('3'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('6'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('9'))
+                cell.classList.add('finishGame', color)
+        })
+    }
+    if(aux.includes('159')){
+        cells.forEach(cell => {
+            if(cell.classList.contains('1'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('5'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('9'))
+                cell.classList.add('finishGame', color)
+        })
+    }
+    if(aux.includes('357')){
+        cells.forEach(cell => {
+            if(cell.classList.contains('3'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('5'))
+                cell.classList.add('finishGame', color)
+            if(cell.classList.contains('7'))
+                cell.classList.add('finishGame', color)
+        })
+    }
+
 }
 
 function checkValidAI(cells){
@@ -29,10 +119,10 @@ function checkValidAI(cells){
         aux.includes('258') || aux.includes('369') || aux.includes('159') || aux.includes('357')) {
         //CPU WINS
         document.querySelector(".CPUalert").classList.add("CPUalertVisible")
-        // cells.forEach(cell => {
-        //     cell.removeEventListener('click',cellClickHandler)
-        // })
+        endGame(cells,aux,'CPU')
+        return 0
     }
+    return 1
 }
 
 
@@ -45,8 +135,13 @@ function checkValid(cells){
     const aux = clickedCells.join('')
     console.log(aux)
     if(aux.includes('123') || aux.includes('456') || aux.includes('789') || aux.includes('147') ||
-        aux.includes('258') || aux.includes('369') || aux.includes('159') || aux.includes('357'))
-            document.querySelector(".YOUalert").classList.add("YOUalertVisible")
+        aux.includes('258') || aux.includes('369') || aux.includes('159') || aux.includes('357')) {
+        //USER WINS
+        document.querySelector(".YOUalert").classList.add("YOUalertVisible")
+        endGame(cells,aux,'user');
+        return 0
+    }
+    return 1
 }
 
 function playAI(cells,userWeapon){
@@ -70,8 +165,11 @@ function playAI(cells,userWeapon){
     }
 
     checkValidAI(cells)
-    if(available === 0)
+    if(available === 0) {
+        //DRAW
         document.querySelector(".DRAWalert").classList.add("DRAWalertVisible")
+        endGame(cells,'123456789', 'draw')
+    }
 }
 
 
