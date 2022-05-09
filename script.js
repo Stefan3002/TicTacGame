@@ -16,7 +16,7 @@ function play(cells,weapon) {
         })
     })
 }
-function endGame(cells,aux,user){
+function endGame(cells,frecv,user){
     cells.forEach(cell => {
         if(!cell.classList.contains("clicked"))
             cell.classList.add("clicked")
@@ -24,7 +24,9 @@ function endGame(cells,aux,user){
     let color = user === 'user' ? 'greenFinish' : 'redFinish'
     if(user === 'draw')
        color = 'neutralFinish'
-    if(aux.includes('123')){
+
+
+    if((frecv[1] && frecv[2] && frecv[3])){
         cells.forEach(cell => {
             if(cell.classList.contains('1'))
                 cell.classList.add('finishGame', color)
@@ -34,7 +36,7 @@ function endGame(cells,aux,user){
                 cell.classList.add('finishGame', color)
         })
     }
-    if(aux.includes('456')){
+    if((frecv[4] && frecv[5] && frecv[6])){
         cells.forEach(cell => {
             if(cell.classList.contains('4'))
                 cell.classList.add('finishGame', color)
@@ -44,7 +46,7 @@ function endGame(cells,aux,user){
                 cell.classList.add('finishGame', color)
         })
     }
-    if(aux.includes('789')){
+    if((frecv[7] && frecv[8] && frecv[9])){
         cells.forEach(cell => {
             if(cell.classList.contains('7'))
                 cell.classList.add('finishGame', color)
@@ -54,7 +56,7 @@ function endGame(cells,aux,user){
                 cell.classList.add('finishGame', color)
         })
     }
-    if(aux.includes('147')){
+    if((frecv[1] && frecv[4] && frecv[7])){
         cells.forEach(cell => {
             if(cell.classList.contains('1'))
                 cell.classList.add('finishGame', color)
@@ -64,7 +66,7 @@ function endGame(cells,aux,user){
                 cell.classList.add('finishGame', color)
         })
     }
-    if(aux.includes('258')){
+    if((frecv[2] && frecv[5] && frecv[8])){
         cells.forEach(cell => {
             if(cell.classList.contains('2'))
                 cell.classList.add('finishGame', color)
@@ -74,7 +76,7 @@ function endGame(cells,aux,user){
                 cell.classList.add('finishGame', color)
         })
     }
-    if(aux.includes('369')){
+    if((frecv[3] && frecv[6] && frecv[9])){
         cells.forEach(cell => {
             if(cell.classList.contains('3'))
                 cell.classList.add('finishGame', color)
@@ -84,7 +86,7 @@ function endGame(cells,aux,user){
                 cell.classList.add('finishGame', color)
         })
     }
-    if(aux.includes('159')){
+    if((frecv[1] && frecv[5] && frecv[9])){
         cells.forEach(cell => {
             if(cell.classList.contains('1'))
                 cell.classList.add('finishGame', color)
@@ -94,7 +96,7 @@ function endGame(cells,aux,user){
                 cell.classList.add('finishGame', color)
         })
     }
-    if(aux.includes('357')){
+    if((frecv[3] && frecv[5] && frecv[7])){
         cells.forEach(cell => {
             if(cell.classList.contains('3'))
                 cell.classList.add('finishGame', color)
@@ -114,12 +116,16 @@ function checkValidAI(cells){
             clickedCellsAI.push(index + 1)
     })
     const aux = clickedCellsAI.join('')
-    console.log(aux)
-    if(aux.includes('123') || aux.includes('456') || aux.includes('789') || aux.includes('147') ||
-        aux.includes('258') || aux.includes('369') || aux.includes('159') || aux.includes('357')) {
+    const frecv = [0,0,0,0,0,0,0,0,0,0]
+    for(let i = 0; i < aux.length; i++)
+        frecv[parseInt(aux[i])]++
+    if((frecv[1] && frecv[2] && frecv[3]) || (frecv[4] && frecv[5] && frecv[6]) ||
+        (frecv[7] && frecv[8] && frecv[9]) || (frecv[1] && frecv[4] && frecv[7]) ||
+        (frecv[2] && frecv[5] && frecv[8]) || (frecv[3] && frecv[6] && frecv[9]) ||
+        (frecv[1] && frecv[5] && frecv[9]) || (frecv[3] && frecv[5] && frecv[7])) {
         //CPU WINS
         document.querySelector(".CPUalert").classList.add("CPUalertVisible")
-        endGame(cells,aux,'CPU')
+        endGame(cells,frecv,'CPU')
         return 0
     }
     return 1
@@ -133,14 +139,19 @@ function checkValid(cells){
                 clickedCells.push(index + 1)
     })
     const aux = clickedCells.join('')
-    console.log(aux)
-    if(aux.includes('123') || aux.includes('456') || aux.includes('789') || aux.includes('147') ||
-        aux.includes('258') || aux.includes('369') || aux.includes('159') || aux.includes('357')) {
-        //USER WINS
-        document.querySelector(".YOUalert").classList.add("YOUalertVisible")
-        endGame(cells,aux,'user');
-        return 0
-    }
+    console.log("USER- ",aux)
+    const frecv = [0,0,0,0,0,0,0,0,0,0]
+    for(let i = 0; i < aux.length; i++)
+        frecv[parseInt(aux[i])]++
+        if((frecv[1] && frecv[2] && frecv[3]) || (frecv[4] && frecv[5] && frecv[6]) ||
+            (frecv[7] && frecv[8] && frecv[9]) || (frecv[1] && frecv[4] && frecv[7]) ||
+            (frecv[2] && frecv[5] && frecv[8]) || (frecv[3] && frecv[6] && frecv[9]) ||
+            (frecv[1] && frecv[5] && frecv[9]) || (frecv[3] && frecv[5] && frecv[7])) {
+            //USER WINS
+            document.querySelector(".YOUalert").classList.add("YOUalertVisible")
+            endGame(cells,frecv,'user');
+            return 0
+        }
     return 1
 }
 
@@ -168,7 +179,7 @@ function playAI(cells,userWeapon){
     if(available === 0) {
         //DRAW
         document.querySelector(".DRAWalert").classList.add("DRAWalertVisible")
-        endGame(cells,'123456789', 'draw')
+        endGame(cells,[0,1,1,1,1,1,1,1,1,1], 'draw')
     }
 }
 
