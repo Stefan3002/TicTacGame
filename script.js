@@ -3,7 +3,6 @@ function play(cells,weapon) {
     cells.forEach(cell => {
         cell.addEventListener('click', function cellClickHandler(e) {
             const clickedCell = e.target
-            console.log(clickedCell.classList)
             if (!clickedCell.classList.contains("clicked") && !clickedCell.classList.contains("clickedAI")) {
                 clickedCell.innerHTML = "<i class=\"icon clicked fa-xl fa-solid fa-" + weapon + " \"></i>"
                 clickedCell.classList.add("clicked")
@@ -139,7 +138,6 @@ function checkValid(cells){
                 clickedCells.push(index + 1)
     })
     const aux = clickedCells.join('')
-    console.log("USER- ",aux)
     const frecv = [0,0,0,0,0,0,0,0,0,0]
     for(let i = 0; i < aux.length; i++)
         frecv[parseInt(aux[i])]++
@@ -191,7 +189,6 @@ const cells = document.querySelectorAll(".cell")
 const playBtn = document.querySelector(".playBtn")
 const weapons = document.querySelectorAll(".weapon")
 weapons.forEach(weapon => {
-    console.log(weapon)
     weapon.addEventListener("click", e => {
         const clickedWeapon = e.target
         //Check if there is another weapons elected to deselect it
@@ -219,3 +216,7 @@ playBtn.addEventListener("click", () => {
         play(cells,userWeapon)})
 
 
+
+document.querySelector('.restart-btn').addEventListener('click', () => {
+    window.location.reload()
+})
