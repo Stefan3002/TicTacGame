@@ -3,6 +3,17 @@
 **A fully interactive Tic Tac Toe game built using 100% Vanilla JavaScript, HTML, and CSS.**  
 [Live Demo](http://tictacgame.stefansecrieru.com/) | [GitHub Repo](https://github.com/Stefan3002/TicTacGame)
 
+## Timestamps
+
+- Initial commit: 07 May 2022
+- Complete visual remake: 07 July 2025
+
+---
+## Developer Skills Showcased
+- Vanilla proficiency
+- DOM manipulation
+- Data structures and algorithms understanding 
+---
 ## 🎮 Overview
 
 TicTacGame is a minimalist yet polished implementation of the classic Tic Tac Toe game. It's built entirely in **Vanilla JavaScript** with no frameworks or libraries, serving as a great example of core web development principles.
@@ -13,10 +24,7 @@ This project was created to demonstrate how modern, responsive, and interactive 
 
 ## ✨ Features
 
-- ❌⭕
-
-  One-player game with win detection and draw handling
-
+- ❌⭕ One-player game with win detection and draw handling
 - 🔁 Replay and game reset functionality
 - 💡 Clean UI with CSS animations and hover states
 - 📱 Responsive design for desktop and mobile
@@ -28,7 +36,7 @@ This project was created to demonstrate how modern, responsive, and interactive 
 
 - **Vanilla JavaScript (ES6+)**
 - HTML5
-- CSS3
+- SASS
 
 ---
 

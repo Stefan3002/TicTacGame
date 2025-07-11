@@ -1,0 +1,55 @@
+.board
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  grid-template-rows: repeat(3, 1fr)
+
+.cell, .playBtn
+  border-radius: 4px
+  background: $main-color
+  height: 3.8rem
+  width: 3.8rem
+  margin: 1rem
+  display: flex
+  justify-content: center
+  align-items: center
+  transform: scale(1)
+  transition: all 0.3s
+
+  &:hover
+    transform: scale(1.2)
+    transition: all 0.3s
+
+.clicked
+  background: $vanilla
+  transition: all 0.2s ease-out
+
+.clickedAI
+  background: beige
+  transition: all 0.2s ease-out
+
+.wrapper
+  //margin: 1em
+  text-align: center
+  display: flex
+  justify-content: center
+  flex-direction: column
+  align-items: center
+  height: 100vh
+
+.playBtn
+  border: none
+  background: $dark-color
+  color: $main-color
+  font-weight: 600
+  &:hover
+    background: $main-color
+    color: whitesmoke
+    transition: all 0.3s ease-in-out
+
+@media screen and (max-width: 1024px)
+  .wrapper
+    height: fit-content
+  body
+    display: flex
+    flex-direction: column
+    height: 100vh

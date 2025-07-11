@@ -217,3 +217,5 @@ playBtn.addEventListener("click", () => {
     }
     else
         play(cells,userWeapon)})
+
+

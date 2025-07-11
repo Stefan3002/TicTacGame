@@ -1,0 +1,292 @@
+html {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+  color: #373F51;
+}
+
+button {
+  font: "Noto Sans", sans-serif;
+  color: #373F51;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#particles-js {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.head {
+  text-align: justify;
+  margin: 0 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+.head ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem;
+}
+
+header {
+  color: #373F51;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0), #F0B5B3);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30%;
+}
+
+.main-svg {
+  width: 300px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.info {
+  font-weight: 300;
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    width: 100%;
+    height: fit-content;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0), #F0B5B3);
+  }
+  .head {
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+  }
+  .head .info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.cell, .playBtn {
+  border-radius: 4px;
+  background: #F0B5B3;
+  height: 3.8rem;
+  width: 3.8rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+  transition: all 0.3s;
+}
+.cell:hover, .playBtn:hover {
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
+
+.clicked {
+  background: #EEEFA8;
+  transition: all 0.2s ease-out;
+}
+
+.clickedAI {
+  background: beige;
+  transition: all 0.2s ease-out;
+}
+
+.wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.playBtn {
+  border: none;
+  background: #373F51;
+  color: #F0B5B3;
+  font-weight: 600;
+}
+.playBtn:hover {
+  background: #F0B5B3;
+  color: whitesmoke;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    height: fit-content;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+}
+.greenFinish {
+  background: greenyellow;
+}
+
+.redFinish {
+  background: red;
+}
+
+.neutralFinish {
+  background: yellow;
+}
+
+.alertWeapon {
+  background: crimson;
+}
+
+.CPUalert {
+  background: red;
+}
+
+.CPUalertVisible {
+  display: block;
+}
+
+.DRAWalert {
+  background: yellow;
+  color: black;
+}
+
+.DRAWalertVisible {
+  display: block;
+}
+
+.YOUalert {
+  background: greenyellow;
+  color: black;
+}
+
+.YOUalertVisible {
+  display: block;
+}
+
+.alertWeaponVisible {
+  display: block;
+}
+
+.icon {
+  animation-name: rotate;
+  animation-duration: 0.4s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.weapons {
+  display: flex;
+}
+
+.weapon {
+  padding: 0.2em;
+  border-radius: 4px;
+  margin: 0.4em;
+  background: #373F51;
+  color: #F0B5B3;
+  transition: all 0.3s ease-out;
+}
+.weapon:hover {
+  background: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-out;
+}
+
+.selectedWeapon {
+  background: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-out;
+}
+
+.alert {
+  animation-name: pop-up;
+  animation-duration: 0.3s;
+  padding: 1em;
+  color: white;
+  border-radius: 4px;
+  display: none;
+}
+
+@keyframes pop-up {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+footer {
+  text-align: center;
+}
+
+.finishGame {
+  transform: scale(1.3);
+  animation-name: pulse;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+}
+
+.startedGame {
+  animation-name: pulse2;
+  animation-duration: 0.7s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.3) rotate(0);
+  }
+  50% {
+    transform: scale(0.7) rotate(180deg);
+  }
+  100% {
+    transform: scale(1.3) rotate(0);
+  }
+}
+@keyframes pulse2 {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+  50% {
+    transform: scale(0.7) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
